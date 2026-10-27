@@ -48,6 +48,8 @@ public class BookingService {
 
     public synchronized Booking cancel(String id) {
         Booking b = getBooking(id);
+        if (!"CONFIRMED".equals(b.getStatus()))
+            throw new IllegalStateException("Booking not confirmed");
         if ("CANCELLED".equals(b.getStatus()))
             throw new IllegalStateException("Booking already cancelled");
         Equipment e = getEquipment(b.getEquipmentId());
