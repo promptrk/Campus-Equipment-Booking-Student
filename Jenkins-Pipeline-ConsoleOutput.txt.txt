@@ -1,0 +1,252 @@
+Started by user unknown or anonymous
+Obtained Jenkinsfile from git https://github.com/promptrk/Campus-Equipment-Booking-Student
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/promptrk/Campus-Equipment-Booking-Student
+ > C:\Program Files\Git\cmd\git.exe init C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline # timeout=10
+Fetching upstream changes from https://github.com/promptrk/Campus-Equipment-Booking-Student
+ > C:\Program Files\Git\cmd\git.exe --version # timeout=10
+ > git --version # 'git version 2.56.0.windows.2'
+ > C:\Program Files\Git\cmd\git.exe fetch --tags --force --progress -- https://github.com/promptrk/Campus-Equipment-Booking-Student +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\cmd\git.exe config remote.origin.url https://github.com/promptrk/Campus-Equipment-Booking-Student # timeout=10
+ > C:\Program Files\Git\cmd\git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > C:\Program Files\Git\cmd\git.exe rev-parse "refs/remotes/origin/feature/booking-state-consistency^{commit}" # timeout=10
+Checking out Revision 370c2483ed8f19b8f747371d0c39bd7b6a8a9bf7 (refs/remotes/origin/feature/booking-state-consistency)
+ > C:\Program Files\Git\cmd\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -f 370c2483ed8f19b8f747371d0c39bd7b6a8a9bf7 # timeout=10
+Commit message: "Update kubectl apply command in Jenkinsfile"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (1. Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\cmd\git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\.git # timeout=10
+Fetching changes from the remote Git repository
+ > C:\Program Files\Git\cmd\git.exe config remote.origin.url https://github.com/promptrk/Campus-Equipment-Booking-Student # timeout=10
+Fetching upstream changes from https://github.com/promptrk/Campus-Equipment-Booking-Student
+ > C:\Program Files\Git\cmd\git.exe --version # timeout=10
+ > git --version # 'git version 2.56.0.windows.2'
+ > C:\Program Files\Git\cmd\git.exe fetch --tags --force --progress -- https://github.com/promptrk/Campus-Equipment-Booking-Student +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\cmd\git.exe rev-parse "refs/remotes/origin/feature/booking-state-consistency^{commit}" # timeout=10
+Checking out Revision 370c2483ed8f19b8f747371d0c39bd7b6a8a9bf7 (refs/remotes/origin/feature/booking-state-consistency)
+ > C:\Program Files\Git\cmd\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\cmd\git.exe checkout -f 370c2483ed8f19b8f747371d0c39bd7b6a8a9bf7 # timeout=10
+Commit message: "Update kubectl apply command in Jenkinsfile"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (2. Build and Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline>mvn clean test 
+[INFO] Scanning for projects...
+[INFO] Loaded 24256 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] --------------< edu.university:campus-equipment-booking >---------------
+[INFO] Building campus-equipment-booking 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ campus-equipment-booking ---
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ campus-equipment-booking ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ campus-equipment-booking ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ campus-equipment-booking ---
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ campus-equipment-booking ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 17] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ campus-equipment-booking ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running edu.university.equipment.BookingServiceTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.137 s -- in edu.university.equipment.BookingServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.482 s
+[INFO] Finished at: 2026-10-27T12:08:08+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (3. Package JAR)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline>mvn package -DskipTests 
+[INFO] Scanning for projects...
+[INFO] Loaded 24256 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] --------------< edu.university:campus-equipment-booking >---------------
+[INFO] Building campus-equipment-booking 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ campus-equipment-booking ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ campus-equipment-booking ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ campus-equipment-booking ---
+[INFO] skip non existing resourceDirectory C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ campus-equipment-booking ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ campus-equipment-booking ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ campus-equipment-booking ---
+[INFO] Building jar: C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\target\campus-equipment-booking-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ campus-equipment-booking ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Replacing main artifact C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\target\campus-equipment-booking-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline\target\campus-equipment-booking-1.0.0.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.662 s
+[INFO] Finished at: 2026-10-27T12:08:19+05:30
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (4. Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline>docker build -t campus-equipment-booking:set-f . 
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 168B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:17-jdk-jammy
+#2 DONE 3.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/eclipse-temurin:17-jdk-jammy@sha256:31fc6bab94a361b000f88bc0fc525bcb6016cb0176fd49db5c58f81c43187b97
+#4 resolve docker.io/library/eclipse-temurin:17-jdk-jammy@sha256:31fc6bab94a361b000f88bc0fc525bcb6016cb0176fd49db5c58f81c43187b97 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 24.17MB 1.0s done
+#5 DONE 1.0s
+
+#6 [2/3] WORKDIR /app
+#6 CACHED
+
+#7 [3/3] COPY ./target/*.jar app.jar
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:a7ba37de672ac9447bcd24b807078b3335b4b29610cab2870128e9365c84dd81 done
+#8 exporting config sha256:c3b2d2119023ccee59952f7d20a534b4dc1cee4d5e7393a444485351902c7cdc done
+#8 exporting attestation manifest sha256:118b801b6307f7803947dc7cebbd92ad40ed9af63e8314889ac89984b1c9e7f7 0.0s done
+#8 exporting manifest list sha256:6e91214620c2d9f099710c821aa434ca4fb990e76a610cc00071cac00f750a41
+#8 exporting manifest list sha256:6e91214620c2d9f099710c821aa434ca4fb990e76a610cc00071cac00f750a41 0.0s done
+#8 naming to docker.io/library/campus-equipment-booking:set-f done
+#8 unpacking to docker.io/library/campus-equipment-booking:set-f 0.0s done
+#8 DONE 0.1s
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (5. Deploy to Kubernetes)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline>kubectl apply -f k8s-deployment.yaml --validate=false 
+deployment.apps/booking-deployment unchanged
+service/booking-service unchanged
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\booking-pipeline>kubectl rollout status deployment/booking-deployment 
+deployment "booking-deployment" successfully rolled out
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
