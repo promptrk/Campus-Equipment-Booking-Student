@@ -31,7 +31,7 @@ public class BookingService {
         if (quantity <= 0)
             throw new IllegalArgumentException("quantity must be positive");
         Equipment e = getEquipment(equipmentId);
-        if (quantity > e.getAvailableQuantity() + 1)
+        if (quantity > e.getAvailableQuantity())
             throw new IllegalStateException("Requested quantity exceeds available inventory");
         e.setAvailableQuantity(e.getAvailableQuantity() - quantity);
         Booking b = new Booking(UUID.randomUUID().toString(), borrower, equipmentId, quantity);
