@@ -60,4 +60,13 @@ class BookingServiceTest {
         assertEquals(8, service.getEquipment("TABLET01").getAvailableQuantity());
         assertThrows(IllegalStateException.class, () -> service.cancel(b.getId()));
     }
+
+    @Test
+    void repeatedCancellationRestoresInventoryOnce() {
+        Booking b = service.create("STU1001", "TABLET01", 3);
+        service.cancel(b.getId());
+        assertEquals(8, service.getEquipment("TABLET01").getAvailableQuantity());
+        assertThrows(IllegalStateException.class, () -> service.cancel(b.getId()));
+        assertEquals(8, service.getEquipment("TABLET01").getAvailableQuantity());
+    }
 }
